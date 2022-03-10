@@ -1,10 +1,10 @@
 import "./App.css";
-import RenderWithLoop from "./RenderWithLoop/RenderWithLoop";
+import BaiTapThuKinh from "./BaiTapThuKinh/BaiTapThuKinh";
 
 function App() {
   return (
     <div className="App">
-      <RenderWithLoop />
+      <BaiTapThuKinh />
     </div>
   );
 }

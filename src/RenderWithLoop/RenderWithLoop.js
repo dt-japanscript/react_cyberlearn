@@ -31,7 +31,7 @@ export default class RenderWithLoop extends Component {
   renderTable = () => {
     let mangTrComponent = this.productList.map((product, index) => {
       return (
-        <tr>
+        <tr key={index}>
           <td>{product.id}</td>
           <td>{product.name}</td>
           <td>{product.price}</td>

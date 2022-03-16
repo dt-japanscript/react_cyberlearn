@@ -1,10 +1,10 @@
 import "./App.css";
-import BaiTapThuKinh from "./BaiTapThuKinh/BaiTapThuKinh";
+import BTCXNC from "./BTCXNC/BTCXNC";
 
 function App() {
   return (
     <div className="App">
-      <BaiTapThuKinh />
+      <BTCXNC />
     </div>
   );
 }

@@ -36,11 +36,16 @@ export default class BaiTapChonXeNangCao extends Component {
         }
     }
 
+    changeCar = (newCar) => {
+        this.setState({
+            carCurrent: newCar
+        })
+    }
 
     renderIcon = () => {
         return dataFeature.map((item, index) => {
             return (
-                <div className='row mt-1 border border-color-default m3' key={index}>
+                <div style={{ cursor: 'pointer' }} className='row mt-1 border border-color-default m3' key={index} onClick={() => { this.changeCar(item) }}>
                     <div className='col-2'>
                         <img className='' style={{ width: '100%' }} src={item.img} alt='' />
                     </div>
@@ -75,6 +80,15 @@ export default class BaiTapChonXeNangCao extends Component {
         document.querySelector('#appendScript').appendChild(tagScript);
     }
 
+    componentDidUpdate = () => {
+        document.querySelector('#carCurrent').innerHTML = '';
+        let tagScript = document.createElement('script');
+        tagScript.src = 'https://cdn.scaleflex.it/filerobot/js-cloudimage-360-view/v2.0.0.lazysizes.min.js';
+        document.querySelector('#appendScript').innerHTML = "";
+        document.querySelector('#appendScript').appendChild(tagScript);
+    }
+
+
     render() {
         return (
             <div className='container-fluid'>
@@ -82,7 +96,7 @@ export default class BaiTapChonXeNangCao extends Component {
                     <div className='col-6'>
                         <div className='model'>
                             {/* <img style={{ width: '100%' }} src='./images/images-black/images-black-1/civic-1.jpg' alt='' /> */}
-                            <div class="cloudimage-360" data-folder={"./images/" + this.state.carCurrent.srcImg} data-filename-x="civic-{index}.jpg"
+                            <div id="carCurrent" className='cloudimage-360' data-folder={"./images/" + this.state.carCurrent.srcImg} data-filename-x="civic-{index}.jpg"
                                 data-amount-x="8"
                                 style={{ minWidth: '100%' }}>
                             </div>

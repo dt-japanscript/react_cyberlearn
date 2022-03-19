@@ -5,6 +5,37 @@ import dataWheels from '../Data/wheels.json';
 
 export default class BaiTapChonXeNangCao extends Component {
 
+    state = {
+        carCurrent: {
+            id: 4,
+            title: "Rallye Red",
+            type: "Metallic",
+            img: "./images/icons/icon-red.jpg",
+            srcImg: "images-red/images-red-1/",
+            color: "Red",
+            price: "22,550",
+            engineType: "In-Line 4-Cylinder",
+            displacement: "1996 cc",
+            horsepower: "158 @ 6500 rpm",
+            torque: "138 lb-ft @ 4200 rpm",
+            redline: "6700 rpm",
+            wheels: [
+                {
+                    idWheel: 1,
+                    srcImg: "images-red/images-red-1/"
+                },
+                {
+                    idWheel: 2,
+                    srcImg: "images-red/images-red-2/"
+                },
+                {
+                    idWheel: 3,
+                    srcImg: "images-red/images-red-3/"
+                }
+            ]
+        }
+    }
+
 
     renderIcon = () => {
         return dataFeature.map((item, index) => {
@@ -37,14 +68,26 @@ export default class BaiTapChonXeNangCao extends Component {
         })
     }
 
+    componentDidMount = () => {
+        // <script src="https://cdn.scaleflex.it/plugins/js-cloudimage-360-view/2.7.5/js-cloudimage-360-view.min.js"></script>
+        let tagScript = document.createElement('script');
+        tagScript.src = 'https://cdn.scaleflex.it/plugins/js-cloudimage-360-view/2.7.5/js-cloudimage-360-view.min.js'
+        document.querySelector('#appendScript').appendChild(tagScript);
+    }
+
     render() {
         return (
             <div className='container-fluid'>
                 <div className='row'>
                     <div className='col-6'>
                         <div className='model'>
-                            <img style={{ width: '100%' }} src='./images/images-black/images-black-1/civic-1.jpg' alt='' />
+                            {/* <img style={{ width: '100%' }} src='./images/images-black/images-black-1/civic-1.jpg' alt='' /> */}
+                            <div class="cloudimage-360" data-folder={"./images/" + this.state.carCurrent.srcImg} data-filename-x="civic-{index}.jpg"
+                                data-amount-x="8"
+                                style={{ minWidth: '100%' }}>
+                            </div>
                         </div>
+                        <div id='appendScript'></div>
                         <div className="card mt-2">
                             <h5 className='card-header'>Exterior color</h5>
                             <table className="table border border-color-light">
@@ -86,7 +129,7 @@ export default class BaiTapChonXeNangCao extends Component {
                     </div>
 
                 </div>
-            </div>
+            </div >
         )
     }
 }
